@@ -22,7 +22,8 @@ Promise<WooProduct[]>{
   if (!apiUrl) return [];
 
   const response  =await fetch(
-    `${apiUrl}/wp-json/wc/store/v1/products`,
+//   `${apiUrl}/wp-json/wc/store/v1/products`,
+ `${apiUrl}/?rest_route=/wc/store/v1/products`,
     {
       next: { revalidate: 60},
     }

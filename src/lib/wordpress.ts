@@ -189,8 +189,8 @@ export async function getVehicles(): Promise<Car[]> {
   if (!apiUrl) return CARS;
 
   const endpoint = `${apiUrl}/wp-json/wp/v2/${encodeURIComponent(postType)}`;
-  const acfEndpoint = `${apiUrl}/wp-json/wp/v2/${encodeURIComponent(productType)}`;
-
+ // const acfEndpoint = `${apiUrl}/wp-json/wp/v2/${encodeURIComponent(productType)}`;
+const acfEndpoint = `${apiUrl}/?rest_route=/wp/v2/${encodeURIComponent(productType)}`;
 
 const wooProducts = await getWooProducts();
 
@@ -202,7 +202,8 @@ const wooMap = new Map(
 )
 
   const fetchPage = async (page: number) => {
-    const response = await fetch(`${acfEndpoint}?per_page=100&_embed&page=${page}&orderby=date&order=desc`, {
+   // const response = await fetch(`${acfEndpoint}?per_page=100&_embed&page=${page}&orderby=date&order=desc`, {
+    const response = await fetch(`${acfEndpoint}&per_page=100&_embed&page=${page}&orderby=date&order=desc`, {
       next: { revalidate: 60 },
     });
     if (!response.ok) {

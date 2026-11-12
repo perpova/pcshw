@@ -9,3 +9,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://priyankaracarsale.lk/sitemap.xml',
   };
 }
+
