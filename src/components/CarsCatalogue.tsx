@@ -11,6 +11,7 @@ export default function CarsCatalogue({ cars }: { cars: Car[] }) {
   const [selectedMake, setSelectedMake] = useState('');
   const [selectedFuel, setSelectedFuel] = useState('');
   const [selectedCondition, setSelectedCondition] = useState('');
+  const [selectedTransmission, setSelectedTransmission] = useState('');
 
   const filteredCars = useMemo(() => {
     return cars.filter((car) => {
@@ -37,15 +38,20 @@ export default function CarsCatalogue({ cars }: { cars: Car[] }) {
         return false;
       }
 
+      if (selectedTransmission && car.transmission.toLowerCase() !== selectedTransmission.toLowerCase()) {
+        return false;
+      }
+
       return true;
     });
-  }, [cars, searchQuery, selectedMake, selectedFuel, selectedCondition]);
+  }, [cars, searchQuery, selectedMake, selectedFuel, selectedCondition, selectedTransmission]);
 
   const resetFilters = () => {
     setSearchQuery('');
     setSelectedMake('');
     setSelectedFuel('');
     setSelectedCondition('');
+    setSelectedTransmission('');
   };
 
   return (
@@ -74,6 +80,8 @@ export default function CarsCatalogue({ cars }: { cars: Car[] }) {
         setSelectedFuel={setSelectedFuel}
         selectedCondition={selectedCondition}
         setSelectedCondition={setSelectedCondition}
+        selectedTransmission={selectedTransmission}
+        setSelectedTransmission={setSelectedTransmission}
         resetFilters={resetFilters}
       />
 
