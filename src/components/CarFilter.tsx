@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, RotateCcw, ChevronDown, SlidersHorizontal, Check } from 'lucide-react';
-import './filter.css'
+
 
 
 
